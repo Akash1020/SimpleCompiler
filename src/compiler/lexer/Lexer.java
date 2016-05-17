@@ -196,17 +196,6 @@ public class Lexer
                             this.line = accept_line;
                             return token;
                         }
-                    case 2:
-                        {
-                            @SuppressWarnings("hiding") Token token = new2(
-                                getText(accept_length),
-                                start_line + 1,
-                                start_pos + 1);
-                            pushBack(accept_length);
-                            this.pos = accept_pos;
-                            this.line = accept_line;
-                            return token;
-                        }
                     }
                 }
                 else
@@ -228,9 +217,8 @@ public class Lexer
         }
     }
 
-    Token new0(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TInteger(text, line, pos); }
-    Token new1(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TPlus(text, line, pos); }
-    Token new2(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TSemi(text, line, pos); }
+    Token new0(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TWords(text, line, pos); }
+    Token new1(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TOperation(text, line, pos); }
 
     private int getChar() throws IOException
     {
@@ -290,20 +278,19 @@ public class Lexer
     private static int[][][][] gotoTable;
 /*  {
         { // INITIAL
-            {{43, 43, 1}, {48, 57, 2}, {59, 59, 3}, },
+            {{43, 43, 1}, {45, 45, 2}, {97, 122, 3}, },
             {{32, 32, 4}, },
-            {{32, 32, 5}, {48, 57, 2}, },
-            {{10, 10, 6}, },
+            {{32, 32, 4}, },
+            {{32, 32, 5}, {97, 122, 3}, },
             {{32, 32, 4}, },
             {{32, 32, 5}, },
-            {},
         }
     };*/
 
     private static int[][] accept;
 /*  {
         // INITIAL
-        {-1, 1, 0, 2, 1, 0, 2, },
+        {-1, 1, 1, 0, 1, 0, },
 
     };*/
 

@@ -105,6 +105,7 @@ public class Runner extends javax.swing.JFrame {
         int returnVal = fileChooser.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
+            jTextArea1.append(file.getAbsolutePath()+"\n");
             try {
             /* Form our AST */
                 Lexer lexer = new Lexer(new PushbackReader(
@@ -129,6 +130,7 @@ public class Runner extends javax.swing.JFrame {
     }//GEN-LAST:event_FileMouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        jTextArea1.setText("");
         jTextArea1.append(interp.getResult());
     }//GEN-LAST:event_jButton1MouseClicked
 

@@ -4,17 +4,20 @@ Package compiler ;
 
 Helpers
     /* Our helpers */
-    word = ['a' .. 'z'];
+    digit = ['0' .. '9'] ;
     sp = ' ' ;
     nl = 10 ;
     plus = '+';
     minus = '-';
+    div = '/';
+    multi = '*';
 
 Tokens
     /* Our simple token definition(s). */
-    words = word+ sp*;
-    operation = (plus|minus) sp*;
+    integer = digit+ sp*;
+    operation = (plus|minus|div|multi) sp*;
+    semi = ';' nl?;
 
 Productions
     /* Our super-simple grammar */
-    program = [firstvalue]:words [firstoperation]:operation [secondvalue]:words [secondoperation]:operation [thirdvalue]:words;
+    program = [left]:integer operation [right]:integer semi;

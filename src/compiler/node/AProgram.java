@@ -7,10 +7,11 @@ import compiler.analysis.*;
 @SuppressWarnings("nls")
 public final class AProgram extends PProgram
 {
-    private TInteger _left_;
-    private TPlus _plus_;
-    private TInteger _right_;
-    private TSemi _semi_;
+    private TWords _firstvalue_;
+    private TOperation _firstoperation_;
+    private TWords _secondvalue_;
+    private TOperation _secondoperation_;
+    private TWords _thirdvalue_;
 
     public AProgram()
     {
@@ -18,19 +19,22 @@ public final class AProgram extends PProgram
     }
 
     public AProgram(
-        @SuppressWarnings("hiding") TInteger _left_,
-        @SuppressWarnings("hiding") TPlus _plus_,
-        @SuppressWarnings("hiding") TInteger _right_,
-        @SuppressWarnings("hiding") TSemi _semi_)
+        @SuppressWarnings("hiding") TWords _firstvalue_,
+        @SuppressWarnings("hiding") TOperation _firstoperation_,
+        @SuppressWarnings("hiding") TWords _secondvalue_,
+        @SuppressWarnings("hiding") TOperation _secondoperation_,
+        @SuppressWarnings("hiding") TWords _thirdvalue_)
     {
         // Constructor
-        setLeft(_left_);
+        setFirstvalue(_firstvalue_);
 
-        setPlus(_plus_);
+        setFirstoperation(_firstoperation_);
 
-        setRight(_right_);
+        setSecondvalue(_secondvalue_);
 
-        setSemi(_semi_);
+        setSecondoperation(_secondoperation_);
+
+        setThirdvalue(_thirdvalue_);
 
     }
 
@@ -38,10 +42,11 @@ public final class AProgram extends PProgram
     public Object clone()
     {
         return new AProgram(
-            cloneNode(this._left_),
-            cloneNode(this._plus_),
-            cloneNode(this._right_),
-            cloneNode(this._semi_));
+            cloneNode(this._firstvalue_),
+            cloneNode(this._firstoperation_),
+            cloneNode(this._secondvalue_),
+            cloneNode(this._secondoperation_),
+            cloneNode(this._thirdvalue_));
     }
 
     @Override
@@ -50,16 +55,16 @@ public final class AProgram extends PProgram
         ((Analysis) sw).caseAProgram(this);
     }
 
-    public TInteger getLeft()
+    public TWords getFirstvalue()
     {
-        return this._left_;
+        return this._firstvalue_;
     }
 
-    public void setLeft(TInteger node)
+    public void setFirstvalue(TWords node)
     {
-        if(this._left_ != null)
+        if(this._firstvalue_ != null)
         {
-            this._left_.parent(null);
+            this._firstvalue_.parent(null);
         }
 
         if(node != null)
@@ -72,19 +77,19 @@ public final class AProgram extends PProgram
             node.parent(this);
         }
 
-        this._left_ = node;
+        this._firstvalue_ = node;
     }
 
-    public TPlus getPlus()
+    public TOperation getFirstoperation()
     {
-        return this._plus_;
+        return this._firstoperation_;
     }
 
-    public void setPlus(TPlus node)
+    public void setFirstoperation(TOperation node)
     {
-        if(this._plus_ != null)
+        if(this._firstoperation_ != null)
         {
-            this._plus_.parent(null);
+            this._firstoperation_.parent(null);
         }
 
         if(node != null)
@@ -97,19 +102,19 @@ public final class AProgram extends PProgram
             node.parent(this);
         }
 
-        this._plus_ = node;
+        this._firstoperation_ = node;
     }
 
-    public TInteger getRight()
+    public TWords getSecondvalue()
     {
-        return this._right_;
+        return this._secondvalue_;
     }
 
-    public void setRight(TInteger node)
+    public void setSecondvalue(TWords node)
     {
-        if(this._right_ != null)
+        if(this._secondvalue_ != null)
         {
-            this._right_.parent(null);
+            this._secondvalue_.parent(null);
         }
 
         if(node != null)
@@ -122,19 +127,19 @@ public final class AProgram extends PProgram
             node.parent(this);
         }
 
-        this._right_ = node;
+        this._secondvalue_ = node;
     }
 
-    public TSemi getSemi()
+    public TOperation getSecondoperation()
     {
-        return this._semi_;
+        return this._secondoperation_;
     }
 
-    public void setSemi(TSemi node)
+    public void setSecondoperation(TOperation node)
     {
-        if(this._semi_ != null)
+        if(this._secondoperation_ != null)
         {
-            this._semi_.parent(null);
+            this._secondoperation_.parent(null);
         }
 
         if(node != null)
@@ -147,44 +152,76 @@ public final class AProgram extends PProgram
             node.parent(this);
         }
 
-        this._semi_ = node;
+        this._secondoperation_ = node;
+    }
+
+    public TWords getThirdvalue()
+    {
+        return this._thirdvalue_;
+    }
+
+    public void setThirdvalue(TWords node)
+    {
+        if(this._thirdvalue_ != null)
+        {
+            this._thirdvalue_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._thirdvalue_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._left_)
-            + toString(this._plus_)
-            + toString(this._right_)
-            + toString(this._semi_);
+            + toString(this._firstvalue_)
+            + toString(this._firstoperation_)
+            + toString(this._secondvalue_)
+            + toString(this._secondoperation_)
+            + toString(this._thirdvalue_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._left_ == child)
+        if(this._firstvalue_ == child)
         {
-            this._left_ = null;
+            this._firstvalue_ = null;
             return;
         }
 
-        if(this._plus_ == child)
+        if(this._firstoperation_ == child)
         {
-            this._plus_ = null;
+            this._firstoperation_ = null;
             return;
         }
 
-        if(this._right_ == child)
+        if(this._secondvalue_ == child)
         {
-            this._right_ = null;
+            this._secondvalue_ = null;
             return;
         }
 
-        if(this._semi_ == child)
+        if(this._secondoperation_ == child)
         {
-            this._semi_ = null;
+            this._secondoperation_ = null;
+            return;
+        }
+
+        if(this._thirdvalue_ == child)
+        {
+            this._thirdvalue_ = null;
             return;
         }
 
@@ -195,27 +232,33 @@ public final class AProgram extends PProgram
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._left_ == oldChild)
+        if(this._firstvalue_ == oldChild)
         {
-            setLeft((TInteger) newChild);
+            setFirstvalue((TWords) newChild);
             return;
         }
 
-        if(this._plus_ == oldChild)
+        if(this._firstoperation_ == oldChild)
         {
-            setPlus((TPlus) newChild);
+            setFirstoperation((TOperation) newChild);
             return;
         }
 
-        if(this._right_ == oldChild)
+        if(this._secondvalue_ == oldChild)
         {
-            setRight((TInteger) newChild);
+            setSecondvalue((TWords) newChild);
             return;
         }
 
-        if(this._semi_ == oldChild)
+        if(this._secondoperation_ == oldChild)
         {
-            setSemi((TSemi) newChild);
+            setSecondoperation((TOperation) newChild);
+            return;
+        }
+
+        if(this._thirdvalue_ == oldChild)
+        {
+            setThirdvalue((TWords) newChild);
             return;
         }
 

@@ -50,21 +50,25 @@ public class DepthFirstAdapter extends AnalysisAdapter
     public void caseAProgram(AProgram node)
     {
         inAProgram(node);
-        if(node.getLeft() != null)
+        if(node.getFirstvalue() != null)
         {
-            node.getLeft().apply(this);
+            node.getFirstvalue().apply(this);
         }
-        if(node.getPlus() != null)
+        if(node.getFirstoperation() != null)
         {
-            node.getPlus().apply(this);
+            node.getFirstoperation().apply(this);
         }
-        if(node.getRight() != null)
+        if(node.getSecondvalue() != null)
         {
-            node.getRight().apply(this);
+            node.getSecondvalue().apply(this);
         }
-        if(node.getSemi() != null)
+        if(node.getSecondoperation() != null)
         {
-            node.getSemi().apply(this);
+            node.getSecondoperation().apply(this);
+        }
+        if(node.getThirdvalue() != null)
+        {
+            node.getThirdvalue().apply(this);
         }
         outAProgram(node);
     }

@@ -81,19 +81,13 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTInteger(TInteger node)
+    public void caseTWords(TWords node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseTPlus(TPlus node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTSemi(TSemi node)
+    public void caseTOperation(TOperation node)
     {
         defaultCase(node);
     }

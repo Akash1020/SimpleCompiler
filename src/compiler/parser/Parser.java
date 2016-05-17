@@ -214,6 +214,7 @@ public class Parser
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList5 = pop();
         @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
         @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
         @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
@@ -221,16 +222,18 @@ public class Parser
         PProgram pprogramNode1;
         {
             // Block
-        TInteger tintegerNode2;
-        TPlus tplusNode3;
-        TInteger tintegerNode4;
-        TSemi tsemiNode5;
-        tintegerNode2 = (TInteger)nodeArrayList1.get(0);
-        tplusNode3 = (TPlus)nodeArrayList2.get(0);
-        tintegerNode4 = (TInteger)nodeArrayList3.get(0);
-        tsemiNode5 = (TSemi)nodeArrayList4.get(0);
+        TWords twordsNode2;
+        TOperation toperationNode3;
+        TWords twordsNode4;
+        TOperation toperationNode5;
+        TWords twordsNode6;
+        twordsNode2 = (TWords)nodeArrayList1.get(0);
+        toperationNode3 = (TOperation)nodeArrayList2.get(0);
+        twordsNode4 = (TWords)nodeArrayList3.get(0);
+        toperationNode5 = (TOperation)nodeArrayList4.get(0);
+        twordsNode6 = (TWords)nodeArrayList5.get(0);
 
-        pprogramNode1 = new AProgram(tintegerNode2, tplusNode3, tintegerNode4, tsemiNode5);
+        pprogramNode1 = new AProgram(twordsNode2, toperationNode3, twordsNode4, toperationNode5, twordsNode6);
         }
 	nodeList.add(pprogramNode1);
         return nodeList;
@@ -242,9 +245,10 @@ public class Parser
 /*      {
 			{{-1, ERROR, 0}, {0, SHIFT, 1}, },
 			{{-1, ERROR, 1}, {1, SHIFT, 3}, },
-			{{-1, ERROR, 2}, {3, ACCEPT, -1}, },
+			{{-1, ERROR, 2}, {2, ACCEPT, -1}, },
 			{{-1, ERROR, 3}, {0, SHIFT, 4}, },
-			{{-1, ERROR, 4}, {2, SHIFT, 5}, },
+			{{-1, ERROR, 4}, {1, SHIFT, 5}, },
+			{{-1, ERROR, 5}, {0, SHIFT, 6}, },
 			{{-1, REDUCE, 0}, },
         };*/
     private static int[][][] gotoTable;
@@ -253,14 +257,13 @@ public class Parser
         };*/
     private static String[] errorMessages;
 /*      {
-			"expecting: integer",
-			"expecting: plus",
+			"expecting: words",
+			"expecting: operation",
 			"expecting: EOF",
-			"expecting: semi",
         };*/
     private static int[] errors;
 /*      {
-			0, 1, 2, 0, 3, 2, 
+			0, 1, 2, 0, 1, 0, 2, 
         };*/
 
     static 

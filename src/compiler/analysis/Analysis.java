@@ -14,9 +14,8 @@ public interface Analysis extends Switch
     void caseStart(Start node);
     void caseAProgram(AProgram node);
 
-    void caseTInteger(TInteger node);
-    void caseTPlus(TPlus node);
-    void caseTSemi(TSemi node);
+    void caseTWords(TWords node);
+    void caseTOperation(TOperation node);
     void caseEOF(EOF node);
     void caseInvalidToken(InvalidToken node);
 }
