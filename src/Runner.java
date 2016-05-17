@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import compiler.Compiler;
+import compiler.interpreter.Compiler;
 import compiler.lexer.Lexer;
 import compiler.node.Start;
 import compiler.parser.Parser;
